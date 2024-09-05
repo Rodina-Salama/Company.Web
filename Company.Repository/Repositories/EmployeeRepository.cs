@@ -17,28 +17,33 @@ namespace Company.Repository.Repositories
         {
             _context = context;
         }
-       // public void Add(Employee employee)
-       // {
-       //     _context.Add(employee);
-       // }
 
-       // public void Delete(Employee employee)
-       // {
-       //     _context.Remove(employee);
+        public Employee GetEmployeeByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+        // public void Add(Employee employee)
+        // {
+        //     _context.Add(employee);
+        // }
 
-       // }
+        // public void Delete(Employee employee)
+        // {
+        //     _context.Remove(employee);
 
-       // public IEnumerable<Employee> GetAll()
-       // =>
-       //     _context.Employees.ToList();
+        // }
+
+        // public IEnumerable<Employee> GetAll()
+        // =>
+        //     _context.Employees.ToList();
 
 
-       // public Employee GetById(int id)
-       //=> _context.Employees.FirstOrDefault(x => x.Id == id);
+        // public Employee GetById(int id)
+        //=> _context.Employees.FirstOrDefault(x => x.Id == id);
 
-       // public void Update(Employee employee)
-       // {
-       //     _context.Update(employee);
-       // }
+        // public void Update(Employee employee)
+        // {
+        //     _context.Update(employee);
+        // }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,8 +18,14 @@ namespace Company.Data.Context
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
-        //    optionsBuilder.UseSqlServer("server=.; database=CompanyMVCG01; trusted_connections=true;");
+        //    optionsBuilder.UseSqlServer("server=.; database=CompanyMVCG01; Trusted_Connection=true;");
         //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            //modelBuilder.Entity<BaseEntity>().HasQueryFilter(x => !x.IsDeLETED);
+            base.OnModelCreating(modelBuilder);
+        }
 
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }

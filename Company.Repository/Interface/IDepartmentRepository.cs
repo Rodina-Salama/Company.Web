@@ -9,7 +9,7 @@ namespace Company.Repository.Interface
 {
     public interface IDepartmentRepository : IGenericRepository<Department>
     {
-        //Employee GetById(int id);
+        //Department GetById(int id);
         //IEnumerable<Department> GetAll();
         //void Add(Department department);
         //void Update(Department department);

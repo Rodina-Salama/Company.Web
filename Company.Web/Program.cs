@@ -1,4 +1,8 @@
 using Company.Data.Context;
+using Company.Repository.Interface;
+using Company.Repository.Repositories;
+using Company.Service.Interfaces;
+using Company.Service.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Company.Web
@@ -15,6 +19,11 @@ namespace Company.Web
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
+            builder.Services.AddTransient<IDepartmentRepository, DepartmentRepository>();
+            builder.Services.AddTransient<IDepartmentService, DepartmentService>();
+
+
+            
 
             var app = builder.Build();
 
