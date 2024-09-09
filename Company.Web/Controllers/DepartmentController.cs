@@ -1,11 +1,13 @@
 ﻿using Company.Data.Models;
-using Company.Service.Interfaces;
+//using Company.Service.Interfaces.Department;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq.Expressions;
+using Company.Service.Interfaces;
+using Company.Service.Interfaces.Dto;
 
 namespace Company.Web.Controllers
 {
-   
+
 
     public class DepartmentController : Controller
     {
@@ -17,6 +19,7 @@ namespace Company.Web.Controllers
         public IActionResult Index()
         {
             var departments = _departmentService.GetAll();
+            TempData.Keep("TextTempMessage");
             return View(departments);
         }
         [HttpGet]
@@ -27,7 +30,7 @@ namespace Company.Web.Controllers
 
 
         [HttpPost]
-        public IActionResult Create(Department department)
+        public IActionResult Create(DepartmentDto departmentDto)
         {
             try
             {
@@ -35,16 +38,17 @@ namespace Company.Web.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    _departmentService.Add(department);
+                    _departmentService.Add(departmentDto);
+                    TempData["TextTempMessage"] = "Hello from Employee index";
                     return RedirectToAction(nameof(Index));
                 }
                 ModelState.AddModelError("DepartmentError", "ValidationsError");
-                return View(department);
+                return View(departmentDto);
             }
             catch(Exception ex)
             {
                 ModelState.AddModelError("DepartmentError", ex.Message);
-                return View(department);
+                return View(departmentDto);
             }
           
         }
@@ -66,11 +70,11 @@ namespace Company.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(int? id, Department department)
+        public IActionResult Update(int? id, DepartmentDto departmentDto)
         {
-            if (department.Id != id.Value)
+            if (departmentDto.Id != id.Value)
                 return RedirectToAction("NotFoundPage", null, "Home");
-            _departmentService.Update(department);
+            _departmentService.Update(departmentDto);
             return RedirectToAction(nameof(Index));
         }
      

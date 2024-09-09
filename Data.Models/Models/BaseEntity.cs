@@ -10,6 +10,6 @@ namespace Company.Data.Models
     {
         public int Id { get; set; }
         public DateTime CreateAt { get; set; } = DateTime.Now;
-        public bool IsDeLETED { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

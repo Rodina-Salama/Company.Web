@@ -11,7 +11,8 @@ namespace Company.Repository.Interface
     public interface IEmployeeRepository :   IGenericRepository<Employee>
     {
 
-       Employee GetEmployeeByName(string name);
+        IEnumerable<Employee> GetEmployeeByName(string name);
+       // IEnumerable<Employee> GetEmployeeByAddress(string address);
         //Employee GetById(int id);
         //IEnumerable<Employee> GetAll();
         //void Add(Employee employee);

@@ -1,9 +1,12 @@
 using Company.Data.Context;
 using Company.Repository.Interface;
 using Company.Repository.Repositories;
-using Company.Service.Interfaces;
+//using Company.Service.Interfaces.Department;
 using Company.Service.Services;
 using Microsoft.EntityFrameworkCore;
+using Company.Service.Interfaces;
+using Company.Service.Services.Employee;
+using Company.Service.Mapping.Department;
 
 namespace Company.Web
 {
@@ -20,11 +23,13 @@ namespace Company.Web
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
-            builder.Services.AddTransient<IDepartmentRepository, DepartmentRepository>();
+          //  builder.Services.AddTransient<IDepartmentRepository, DepartmentRepository>(); // should be commented
+            builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
             builder.Services.AddTransient<IDepartmentService, DepartmentService>();
+            builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+            builder.Services.AddAutoMapper(x => x.AddProfile(new EmployeeProfile()));
+            builder.Services.AddAutoMapper(x => x.AddProfile(new DepartmentProfile()));
 
-
-            
 
             var app = builder.Build();
 
