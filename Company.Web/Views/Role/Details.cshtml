@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IdentityRole
+
+<h1> Role Details</h1>
+<br />
+<br />
+
+<div>
+    <partial name="PartialView/DetailsDeletePartialView" model="@Model" />
+</div>
+<div>
+    
+    <a asp-action="Index" class="btn btn-light">Back To List</a>
+    <a asp-action="Update" asp-route-id="Id">Edit</a>
+</div>
+
+

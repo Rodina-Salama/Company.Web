@@ -1,0 +1,19 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model RoleUpdateViewModel
+
+<h1>Create new Role</h1>
+<br />
+<br />
+<form asp-action="Create" asp-controller="Role">
+ 
+    <partial  name="PartialView/CreateEditPartialView" model="@Model"/>
+  
+    <input type="submit" value="Create" class="btn btn-primary" />
+    <a asp-action="Index" class="btn btn-light">Back To List</a>
+
+
+</form>
